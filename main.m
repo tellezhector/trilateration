@@ -1,0 +1,23 @@
+n = 12;
+printf("n = %d\n", n);
+max_coordinate = 100;
+printf("max_coordinate = %d\n", max_coordinate);
+max_noise = 1;
+printf("max_noise = %d\n", max_noise);
+
+printf("------------------------------------\n\n");
+
+printf("Generating aerials' positions.\n");
+P = generate_positions(n, max_coordinate);
+
+printf("Generating position to locate.\n");
+x = generate_positions(1);
+
+printf("Meassuring distances from point to locate.\n");
+Dx = distances_from_a_point(P, x);
+
+printf("Adding noise.\n");
+Dxe = Dx + noise(n, max_noise);
+
+printf("Meassuring distances between aerials.\n");
+D = distances(P);
