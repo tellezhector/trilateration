@@ -3,6 +3,6 @@ function Dx = distances_from_a_point(P, x)
     Dx = zeros(quantity, 1);
     
     for i=1:quantity
-        Dx(i,1) = distance(P(i,:), x);
+        Dx(i,1) = norm(P(i,:) - x);
     endfor
 endfunction;
