@@ -19,5 +19,3 @@ Dx = distances_from_a_point(P, x);
 printf("Adding noise.\n");
 Dxe = Dx + noise(n, max_noise);
 
-printf("Meassuring distances between aerials.\n");
-D = distances(P);
