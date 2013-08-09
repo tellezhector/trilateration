@@ -19,3 +19,5 @@ Dx = distances_from_a_point(P, x);
 printf("Adding noise.\n");
 Dxe = Dx + noise(n, max_noise);
 
+printf("Generating random standard deviations")
+sigmas = noise(n, max_noise) + 10;
