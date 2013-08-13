@@ -2,7 +2,7 @@ n = 12;
 printf("n = %d\n", n);
 max_coordinate = 100;
 printf("max_coordinate = %d\n", max_coordinate);
-max_noise = 1;
+max_noise = 10;
 printf("max_noise = %d\n", max_noise);
 
 printf("------------------------------------\n\n");
@@ -14,12 +14,13 @@ printf("Generating position to locate.\n");
 x = generate_positions(1);
 
 printf("Meassuring distances from point to locate.\n");
-Rx = distances_from_a_point(P, x);
+R = distances_from_a_point(P, x);
 
 printf("Adding noise.\n");
-Rxe = Rx + noise(n, max_noise);
+Re = R + noise(n, max_noise);
 
-printf("Generating random standard deviations")
+printf("Generating random standard deviations\n");
 sigmas = noise(n, max_noise) + 10;
 
-printf("")
+printf("Plotting.\n");
+plot_circles(P, Re);
