@@ -2,10 +2,20 @@ function intersections = find_intersections(P1, P2, r1, r2)
     d = norm(P1-P2);
     
     if(r1+r2 < d)
-        intersections = zeros(0,0);
+        intersections = zeros(0);
         return;
     endif
-
+    
+    if(r1+d < r2)
+        intersections = zeros(0);
+        return;
+    endif
+    
+    if(d+r2 < r1)
+        intersections = zeros(0);
+        return;
+    endif
+    
     middle = (P1 + P2) / 2;
 	
 	if(r1+r2 == d)
