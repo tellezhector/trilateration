@@ -14,10 +14,12 @@ printf("Generating position to locate.\n");
 x = generate_positions(1);
 
 printf("Meassuring distances from point to locate.\n");
-Dx = distances_from_a_point(P, x);
+Rx = distances_from_a_point(P, x);
 
 printf("Adding noise.\n");
-Dxe = Dx + noise(n, max_noise);
+Rxe = Rx + noise(n, max_noise);
 
 printf("Generating random standard deviations")
 sigmas = noise(n, max_noise) + 10;
+
+printf("")
