@@ -17,10 +17,10 @@ printf("Meassuring distances from point to locate.\n");
 R = distances_from_a_point(P, x);
 
 printf("Generating random standard deviations\n");
-sigmas = rand(n, 1)*10 + 10;
+sigma = rand(n, 1)*10 + 10;
 
 printf("Adding noise.\n");
-Re = R + normrnd(R, sigmas);
+Re = R + normrnd(R, sigma);
 
 printf("Plotting.\n");
 plot_circles(P, Re);
