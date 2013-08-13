@@ -14,5 +14,5 @@ function void = plot_circles(P, Re)
     endfor
     
     plot(X,Y);
-    axis("square");
+    axis([-200, 200, -200, 200], "square");
 endfunction

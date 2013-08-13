@@ -1,4 +1,4 @@
-n = 12;
+n = 3;
 printf("n = %d\n", n);
 max_coordinate = 100;
 printf("max_coordinate = %d\n", max_coordinate);
