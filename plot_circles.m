@@ -9,6 +9,7 @@ function void = plot_circles(P, Re)
             Y=y';
             continue;
         endif
+        
         X(:,i) = x';
         Y(:,i) = y';
     endfor
