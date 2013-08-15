@@ -20,8 +20,11 @@ sigma = rand(n, 1)*0.1;
 printf("Adding noise.\n");
 Re = R + normrnd(R, sigma);
 
+printf("Getting relevant points and weights.\n");
+[RP, W] = find_relevant_points_with_weights(P, Re, sigma);
+
 printf("Getting position. \n");
-y = get_position(P, Re, sigma);
+y = get_position(W, RP);
 
 d = norm(x-y);
 printf("Distance %f.\n", d);
