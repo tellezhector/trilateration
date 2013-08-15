@@ -13,7 +13,7 @@ function [RP, W] = find_relevant_points_with_weights(P, Re, sigma)
             [I, intersectionscase] = find_intersections(P1, P2, r1, r2);
             
             switch intersectionscase
-                case {"separated circles", "first circle engulfed", "second circle engulfed"}
+                case {"separated circles", "circle engulfed"}
                     I   = (P1+P2)/2;
                     d1  = norm(I-P1);
                     d2  = norm(I-P2);

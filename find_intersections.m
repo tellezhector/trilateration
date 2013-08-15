@@ -9,13 +9,13 @@ function [intersections, intersectionscase] = find_intersections(P1, P2, r1, r2)
     
     if(r1+d < r2)
         intersections = zeros(0);
-        intersectionscase = "first circle engulfed";
+        intersectionscase = "circle engulfed";
         return;
     endif
     
     if(d+r2 < r1)
         intersections = zeros(0);
-        intersectionscase = "second circle engulfed";
+        intersectionscase = "circle engulfed";
         return;
     endif
     
