@@ -1,25 +1,29 @@
-function intersections = find_intersections(P1, P2, r1, r2)
+function [intersections, intersectionscase] = find_intersections(P1, P2, r1, r2)
     d = norm(P1-P2);
     
     if(r1+r2 < d)
         intersections = zeros(0);
+        intersectionscase = "separated circles";
         return;
     endif
     
     if(r1+d < r2)
         intersections = zeros(0);
+        intersectionscase = "first circle engulfed";
         return;
     endif
     
     if(d+r2 < r1)
         intersections = zeros(0);
+        intersectionscase = "second circle engulfed";
         return;
     endif
     
     middle = (P1 + P2) / 2;
 	
 	if(r1+r2 == d)
-		intersections = middle; 
+		intersections = middle;
+        intersectionscase = "one intersection";
 		return;
     endif
 
@@ -35,6 +39,7 @@ function intersections = find_intersections(P1, P2, r1, r2)
     
 	if(sinAlpha == 0)
         intersections = base;
+        intersectionscase = "one intersection";
         return;
     endif
     
@@ -42,4 +47,5 @@ function intersections = find_intersections(P1, P2, r1, r2)
     intersect_2 = base - (pu_AB * r1 * sinAlpha);
 	
     intersections = [intersect_1; intersect_2];
+    intersectionscase = "two intersections";
 endfunction;
