@@ -1,0 +1,21 @@
+function [M, dm] = find_maximum_gaussians_product(m1, m2, sigma1, sigma2)
+	if (m2 < m1)
+		aux = m1;
+		m1 = m2;
+		m2 = aux;
+
+		aux = sigma1;
+		sigma1 = sigma2;
+		sigma2 = aux;		
+	endif
+	
+	epsilon = ((m2 + sigma2) - (m1 - sigma1))/1000;
+	x = m1-sigma1:epsilon:m2+sigma2;
+	y1 = evaluated_normal_density(x, m1, sigma1);
+	y2 = evaluated_normal_density(x, m2, sigma2);
+	y  = y1 .* y2;
+	M  = max(y);
+	Mx = x(y==M);
+	dm = Mx - m1;
+	plot(x, y1, "b", x, y2, "b", x, y, "r", Mx, M, "+b");
+endfunction
