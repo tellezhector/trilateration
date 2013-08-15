@@ -24,8 +24,11 @@ Re = add_gaussian_noise(R, sigma);
 printf("Getting relevant points and weights.\n");
 [RP, W] = find_relevant_points_with_weights(P, Re, sigma);
 
+printf("Filtering most important points.\n");
+[MI, IW] = filter_most_important_points(RP, W, n);
+
 printf("Getting position. \n");
-y = get_position(W, RP);
+y = get_position(IW, MI);
 
 d = norm(x-y);
 printf("Distance %f.\n", d);
@@ -36,5 +39,5 @@ printf("Plotting.\n");
 [X,Y] = poinst_for_circles_plotting(P, Re);
 [s1, s2] = segment(x, y);
 
-plot(X, Y, P(:,1), P(:,2), ".b", x(1), x(2), "+", y(1), y(2), "x", s1, s2);
+plot(X, Y, MI(:,1), MI(:,2), ".b", x(1), x(2), "+", y(1), y(2), "x", s1, s2);
 axis([-400, 400, -400, 400], "square");

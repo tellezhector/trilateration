@@ -38,9 +38,4 @@ function [RP, W] = find_relevant_points_with_weights(P, Re, sigma)
 
     W   =   W(2:size(W,1), :);
     RP  =   RP(2:size(RP,1), :);
-    
-    sorted = sortrows([W, RP], -1);
-    
-    W   =   sorted(1:n, 1);
-    RP  =   sorted(1:n, 2:3);
 endfunction;
