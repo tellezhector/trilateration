@@ -17,5 +17,4 @@ function [M, dm] = find_maximum_gaussians_product(m1, m2, sigma1, sigma2)
 	M  = max(y);
 	Mx = x(y==M);
 	dm = Mx - m1;
-	plot(x, y1, "b", x, y2, "b", x, y, "r", Mx, M, "+b");
 endfunction

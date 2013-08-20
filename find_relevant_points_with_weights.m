@@ -13,12 +13,18 @@ function [RP, W] = find_relevant_points_with_weights(P, Re, sigma)
             [I, intersectionscase] = find_intersections(P1, P2, r1, r2);
             
             switch intersectionscase
-                case {"separated circles", "circle engulfed"}
-                    I   = (P1+P2)/2;
+                case "separated circles"
+                    I   = find_strongest_weak_intersection_for_separate_circles(P1, r1, sigma1, P2, r2, sigma2);
                     d1  = norm(I-P1);
                     d2  = norm(I-P2);
                     w   = evaluated_normal_density(d1, r1, sigma1) * evaluated_normal_density(d2, r2, sigma2);
-
+				
+				case "circle engulfed"
+					I  = find_strongest_weak_intersection_for_engulfed_circles(P1, r1, sigma1, P2, r2, sigma2);
+                    d1  = norm(I-P1);
+                    d2  = norm(I-P2);
+                    w   = evaluated_normal_density(d1, r1, sigma1) * evaluated_normal_density(d2, r2, sigma2);
+					
                 case "two intersections"
                     w = evaluated_normal_density(r1, r1, sigma1) * evaluated_normal_density(r2, r2, sigma2);
                     w = [w; w];

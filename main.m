@@ -39,5 +39,5 @@ printf("Plotting.\n");
 [X,Y] = poinst_for_circles_plotting(P, Re);
 [s1, s2] = segment(x, y);
 
-plot(X, Y, MI(:,1), MI(:,2), ".b", x(1), x(2), "+", y(1), y(2), "x", s1, s2);
+plot(X, Y, "5", MI(:,1), MI(:,2), ".r", x(1), x(2), "+", y(1), y(2), "x", s1, s2);
 axis([-400, 400, -400, 400], "square");
