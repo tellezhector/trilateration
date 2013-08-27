@@ -1,4 +1,5 @@
-function [M, dm] = find_maximum_gaussians_product(m1, m2, sigma1, sigma2)
+function [M, dm] = maximum_gaussians_product(m1, sigma1, m2, sigma2)
+    printf("hello!\n");
 	if (m2 < m1)
 		aux = m1;
 		m1 = m2;
