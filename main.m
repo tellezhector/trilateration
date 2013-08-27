@@ -1,5 +1,8 @@
+printf("------------------------------------\n");
+printf("------------------------------------\n");
+printf("------------------------------------\n");
 printf("USED PARAMETERS\n\n");
-n = 10;
+n = 15;
 max_coordinate = 100;
 
 printf("n = %d (number of aerials)\n", n);
