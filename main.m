@@ -1,5 +1,5 @@
 printf("USED PARAMETERS\n\n");
-n = 15;
+n = 10;
 max_coordinate = 100;
 
 printf("n = %d (number of aerials)\n", n);
@@ -28,6 +28,7 @@ printf("ALGORITHM STARTS\n\n");
 
 printf("Getting relevant points.\n");
 RP = relevant_points(P, Re, sigma);
+printf("%d relevant points found.\n", size(RP, 1));
 
 printf("Getting weights.\n");
 W = weights(RP, P, Re, sigma);
