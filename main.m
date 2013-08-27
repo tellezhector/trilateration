@@ -1,10 +1,12 @@
+printf("USED PARAMETERS\n\n");
 n = 15;
 max_coordinate = 100;
 
-printf("n = %d\n", n);
-printf("max_coordinate = %d\n", max_coordinate);
+printf("n = %d (number of aerials)\n", n);
+printf("max_coordinate = %d (map size is: 2*max_coordinate X 2*max_coordinate)\n", max_coordinate);
 
-printf("------------------------------------\n\n");
+printf("------------------------------------\n");
+printf("GENERATING RANDOM DATA\n\n");
 
 printf("Generating aerials' positions.\n");
 P = generate_positions(n, max_coordinate);
@@ -19,10 +21,16 @@ printf("Generating random standard deviations.\n");
 sigma = rand(n, 1)*50;
 
 printf("Adding noise.\n");
-Re = add_gaussian_noise(R, sigma);
+Re = abs(add_gaussian_noise(R, sigma));
 
-printf("Getting relevant points and weights.\n");
-[RP, W] = find_relevant_points_with_weights(P, Re, sigma);
+printf("------------------------------------\n");
+printf("ALGORITHM STARTS\n\n");
+
+printf("Getting relevant points.\n");
+RP = relevant_points(P, Re, sigma);
+
+printf("Getting weights.\n");
+W = weights(RP, P, Re, sigma);
 
 printf("Filtering most important points.\n");
 [MI, IW] = filter_most_important_points(RP, W, n);
@@ -30,14 +38,15 @@ printf("Filtering most important points.\n");
 printf("Getting position. \n");
 y = get_position(IW, MI);
 
-d = norm(x-y);
-printf("Distance %f.\n", d);
-
 printf("------------------------------------\n\n");
+printf("PLOTTING RESULTS.\n");
 
-printf("Plotting.\n");
+d = norm(x-y);
+printf("Distance from real position: %f.\n", d);
+
 [X,Y] = poinst_for_circles_plotting(P, Re);
 [s1, s2] = segment(x, y);
 
-plot(X, Y, "5", MI(:,1), MI(:,2), ".r", x(1), x(2), "+", y(1), y(2), "x", s1, s2);
-axis([-400, 400, -400, 400], "square");
+plot(X, Y, "5", RP(:,1), RP(:,2), ".b", MI(:,1), MI(:,2), "or", x(1), x(2), "+", y(1), y(2), "x", s1, s2);
+map_size = 4*max_coordinate;
+axis([-map_size, map_size, -map_size, map_size], "square");
