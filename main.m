@@ -1,5 +1,5 @@
 printf("USED PARAMETERS\n\n");
-n = 10;
+n = 20;
 max_coordinate = 100;
 
 printf("n = %d (number of aerials)\n", n);
@@ -20,7 +20,7 @@ R = distances_from_a_point(P, x);
 printf("Generating random standard deviations.\n");
 sigma = rand(n, 1)*50;
 
-printf("Adding noise.\n");
+printf("Adding gaussian noise.\n");
 Re = abs(add_gaussian_noise(R, sigma));
 
 printf("------------------------------------\n");
@@ -31,7 +31,9 @@ RP = relevant_points(P, Re, sigma);
 printf("%d relevant points found.\n", size(RP, 1));
 
 printf("Getting weights.\n");
+tic;
 W = weights(RP, P, Re, sigma);
+toc;
 
 printf("Filtering most important points.\n");
 [MI, IW] = filter_most_important_points(RP, W, n);
