@@ -1,3 +1,5 @@
+warning("off", "Octave:broadcast")
+
 parameters
 random_data
 printf("ALGORITHM STARTS\n\n");
