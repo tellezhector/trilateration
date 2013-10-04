@@ -1,4 +1,4 @@
-function [P, x, R, sigma, Re] = random_data(n, max_coordinate)
+function [P, x, R, sigma, Re] = random_data(n, max_coordinate, sigma_lower_bound, sigma_upper_bound)
 	printf("GENERATING RANDOM DATA\n\n");
 
 	printf("Generating aerials' positions.\n");
@@ -12,9 +12,10 @@ function [P, x, R, sigma, Re] = random_data(n, max_coordinate)
 	printf("Max distance: %f \n", max(R));
 	printf("Min distance: %f \n", min(R));
 
-	printf("Generating random standard deviations.\n");
-	sigma = rand(n, 1) * 100;
+	printf("Generating random standard deviations.\n");0
+	sigma = sigma_lower_bound + rand(n, 1) * (sigma_upper_bound - sigma_lower_bound);
 	printf("Max standard deviation: %f \n", max(sigma));
+	printf("Mean standard deviation: %f \n", mean(sigma));
 	printf("Min standard deviation: %f \n", min(sigma));
 
 	printf("Adding gaussian noise.\n");
