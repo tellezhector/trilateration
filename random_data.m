@@ -1,5 +1,4 @@
 function [P, x, R, sigma, Re] = random_data(n, max_coordinate, sigma_lower_bound, sigma_upper_bound)
-	printf("GENERATING RANDOM DATA\n\n");
 
 	printf("Generating aerials' positions.\n");
 	P = generate_positions(n, max_coordinate);
@@ -20,6 +19,4 @@ function [P, x, R, sigma, Re] = random_data(n, max_coordinate, sigma_lower_bound
 
 	printf("Adding gaussian noise.\n");
 	Re = abs(add_gaussian_noise(R, sigma));
-
-	printf("------------------------------------\n\n");
 endfunction
