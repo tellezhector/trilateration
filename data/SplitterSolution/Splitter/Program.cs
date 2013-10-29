@@ -25,12 +25,12 @@
             }
             else
             {
-                fileName = "eposition_1.txt";    
+                fileName = "eposition_2.txt";    
             }
 
             var withoutExtension = fileName.Split('.')[0];
-            string directoryPath = string.Format("{0}/{1}", BaseDirectory, withoutExtension);
-            Directory.CreateDirectory(directoryPath);
+            string directoryPathBase = string.Format("{0}/{1}", BaseDirectory, withoutExtension);
+            Directory.CreateDirectory(directoryPathBase);
             var something = new StreamReader(BaseDirectory + "/" + fileName);
 
             bool dataStarts = false;
@@ -41,6 +41,8 @@
             int counter = 0;
             StopWatch stopWatch = new StopWatch(true);
             double seconds;
+            string directoryPath = string.Format("{0}/sub{1}", directoryPathBase, 0);
+            Directory.CreateDirectory(directoryPath);
             while ((line = something.ReadLine()) != null)
             {
                 if (regex.IsMatch(line) && !dataStarts)
@@ -57,11 +59,13 @@
                 if (string.IsNullOrWhiteSpace(line))
                 {
                     counter++;
-                    if (counter % 1000 == 0)
+                    if (counter % 5000 == 0)
                     {
                         seconds = stopWatch.Seconds;
                         Console.WriteLine("{0} files writen. In {1} seconds.", counter, seconds); 
                         Console.WriteLine("Current rate {0} files/second.", counter / seconds);
+                        directoryPath = string.Format("{0}/sub{1}", directoryPathBase, counter / 5000);
+                        Directory.CreateDirectory(directoryPath);
                     }
 
                     SaveCase(current_case, withoutExtension, directoryPath);
