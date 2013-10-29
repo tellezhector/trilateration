@@ -30,3 +30,4 @@ _ReSharper*/
 data/eposition_*/*
 eposition_*.txt
 pm.pdf
+.Sync*
