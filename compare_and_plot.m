@@ -1,5 +1,5 @@
-function void = compare(path)
-	[real_position, estimate, time, P, Re, sigma] = load_comparison_data(path)
+function void = compare_and_plot(path)
+	[real_position, estimate, time, P, Re, sigma] = load_comparison_data(path);
 	
 	printf("------------------------------------\n\n");
 	printf("ALGORITHM STARTS.\n");
