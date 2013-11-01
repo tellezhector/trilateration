@@ -3,8 +3,13 @@ function results = estimate_positions_by_dir(path)
     n = size(subdirs_info)(1);
     results = [];
     for i  = 1:n
+        if(mod(i, 100) == 0)
+            printf("%d subpaths analized in this directory so far.\n", i);
+            disp(path);
+            disp("-------");
+        endif
+        
         dir = subdirs_info(i).name;
-        disp(dir);
         is_file = !subdirs_info(i).isdir;
         if (is_file)
             [aerials, real_position, sigma_max, sigma_min, sigma_mean, estimate, dist, time, our_estimate, our_dist, our_time] = estimate_from_file([path, "/",  dir]);
