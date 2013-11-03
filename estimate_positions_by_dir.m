@@ -10,10 +10,11 @@ function results = estimate_positions_by_dir(path)
         endif
         
         dir = subdirs_info(i).name;
+        dir_path = [path, "/",  dir];
         is_file = !subdirs_info(i).isdir;
         if (is_file)
-            [aerials, real_position, sigma_max, sigma_min, sigma_mean, estimate, dist, time, our_estimate, our_dist, our_time] = estimate_from_file([path, "/",  dir]);
-            results = [results; [aerials, real_position, sigma_max, sigma_min, sigma_mean, estimate, dist, time, our_estimate, our_dist, our_time]];
+            [node_id, aerials, real_position, sigma_max, sigma_min, sigma_mean, estimate, dist, time, our_estimate, our_dist, our_time] = estimate_from_file(dir_path);
+            results = [results; [node_id, aerials, real_position, sigma_max, sigma_min, sigma_mean, estimate, dist, time, our_estimate, our_dist, our_time]];
             continue;
         endif
         
@@ -21,6 +22,6 @@ function results = estimate_positions_by_dir(path)
             continue;
         endif
         
-        results = [results; estimate_positions_by_dir([path, "/", dir])];
+        results = [results; estimate_positions_by_dir(dir_path)];
     endfor
 endfunction

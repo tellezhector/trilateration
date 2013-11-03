@@ -1,5 +1,5 @@
-function [aerials, real_position, sigma_max, sigma_min, sigma_mean, estimate, dist, time, our_estimate, our_dist, our_time] = estimate_from_file(path)
-	[real_position, estimate, time, P, Re, sigma] = load_comparison_data(path);
+function [node_id, aerials, real_position, sigma_max, sigma_min, sigma_mean, estimate, dist, time, our_estimate, our_dist, our_time] = estimate_from_file(path)
+	[node_id, real_position, estimate, time, P, Re, sigma] = load_comparison_data(path);
     tic;
 	[our_estimate, RP, MI] = find_best_approximation(P, Re, sigma);
 	our_time = toc;
