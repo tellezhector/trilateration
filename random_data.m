@@ -11,7 +11,7 @@ function [P, x, R, sigma, Re] = random_data(n, max_coordinate, sigma_lower_bound
 	printf("Max distance: %f \n", max(R));
 	printf("Min distance: %f \n", min(R));
 
-	printf("Generating random standard deviations.\n");0
+	printf("Generating random standard deviations.\n");
 	sigma = sigma_lower_bound + rand(n, 1) * (sigma_upper_bound - sigma_lower_bound);
 	printf("Max standard deviation: %f \n", max(sigma));
 	printf("Mean standard deviation: %f \n", mean(sigma));
