@@ -21,7 +21,7 @@ printf("GENERATING RANDOM DATA\n\n");
 printf("------------------------------------\n\n");
 printf("ALGORITHM STARTS\n\n");
 
-[y, RP, MI] = find_best_approximation(P, Re, sigma);
+[y, MI, RP] = find_best_approximation(P, Re, sigma);
 
 printf("------------------------------------\n\n");
 printf("PLOTTING RESULTS.\n");
