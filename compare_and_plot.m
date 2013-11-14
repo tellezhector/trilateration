@@ -5,7 +5,7 @@ function void = compare_and_plot(path)
 	printf("ALGORITHM STARTS.\n");
 
 	tic;
-	[our_estimate, RP, MI] = find_best_approximation(P, Re, sigma);
+	[our_estimate, MI, RP] = find_best_approximation(P, Re, sigma);
 	our_time = toc;
 	
 	printf("------------------------------------\n\n");
