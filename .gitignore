@@ -27,7 +27,9 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-data/eposition_1/*txt
+data/eposition_*/*
+eposition_*.txt
 pm.pdf
+.Sync*
 results/*
 .dropbox
