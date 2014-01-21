@@ -27,9 +27,12 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+
+.Sync*
+.dropbox
+
+results/*
 data/eposition_*/*
 eposition_*.txt
+
 pm.pdf
-.Sync*
-results/*
-.dropbox
